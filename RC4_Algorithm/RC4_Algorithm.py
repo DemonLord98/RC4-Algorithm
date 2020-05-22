@@ -4,25 +4,24 @@ def swap_func(list, pos1, pos2):
 
 KEY = [1, 2, 3, 6]
 PLAIN_TEXT = [1, 2, 2, 2]
-ciphertext = []
-# S_vector = list(range(0,256)) comment for now for testing purposes
+print(f"Key = {KEY}\nText = {PLAIN_TEXT}")
 S_vector = list(range(0,8))
 T_vector = []
-i, j= 0, 0
+ciphertext = []
+i, j = 0, 0
 while i < len(S_vector):
     appe = KEY[i % len(KEY)]
     T_vector.append(appe)
     i += 1
 
 i = 0
-
 while i < len(S_vector):
     j = (j + S_vector[i] + T_vector[i]) % len(S_vector)
     swap_func(S_vector, i, j)
     i += 1
 
-print (S_vector)
-i, j, x= 0, 0, 0
+print (f"S = {S_vector}")
+i, j, x = 0, 0, 0
 while x < len(PLAIN_TEXT):
     i = (i + 1) % len(S_vector)
     j = (j + S_vector[i]) % len(S_vector)
@@ -33,4 +32,4 @@ while x < len(PLAIN_TEXT):
     ciphertext.append(appe)
     x += 1
 
-print(ciphertext)
+print(f"\nCiphered = {ciphertext}")
